@@ -7,7 +7,7 @@ export function updateProductName() {
             const name = this.frameImageName.replace(/\.[^/.]+$/, '');
             display.textContent = name;
         } else {
-            display.textContent = '製品名なし';
+            display.innerHTML = `<img src="micedraw-logo.png" alt="micedraw" class="product-logo">`;
         }
     }
 }

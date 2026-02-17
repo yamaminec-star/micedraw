@@ -265,6 +265,7 @@ export class FaceMeasurementApp {
 
     // 初期顔画像を生成
     createInitialFaceImage() {
+		document.fonts.load('100px "Inter"').then(() => {
         const tempCanvas = document.createElement('canvas');
         tempCanvas.width = 2000;
         tempCanvas.height = 2000;
@@ -278,13 +279,11 @@ export class FaceMeasurementApp {
         tempCtx.fillRect(0, 0, 2000, 2000);
         tempCtx.filter = 'none';
         // テキスト設定
-        tempCtx.fillStyle = '#fff';
-        tempCtx.font = '300px "Franklin Gothic", "Arial Narrow", sans-serif';
+        tempCtx.fillStyle = 'rgba(255, 255, 255, 1)';
+			tempCtx.font = '100 150px "Inter"';
         tempCtx.textAlign = 'center';
         tempCtx.textBaseline = 'middle';
-        
-        // テキスト描画
-        tempCtx.fillText('JUS4U', 1000, 1000);
+			tempCtx.fillText('JUS4U "your frame,your game."', 1000, 1000);
         
         // Imageオブジェクトに変換
         const img = new Image();
@@ -296,6 +295,7 @@ export class FaceMeasurementApp {
             this.updateInfoWindowContent();
         };
         img.src = tempCanvas.toDataURL();
+		});
     }
 
     setupEventListeners() {
@@ -559,15 +559,15 @@ export class FaceMeasurementApp {
     const whiteRgbaText = document.getElementById('color-white-window').textContent;
     
     const data = [
-        `日時: ${dateStr}`,
-        `フレームファイル名: ${this.frameImageName || '未選択'}`,
-        `テクスチャファイル名: ${this.currentTextureName || 'なし'}`,
-        `PD値: ${this.baseRealSize}mm`,
-        `顔画像ファイル名: ${this.baseImageName || '未選択'}`,
-        `黒部分RGBA: ${blackRgbaText}`,
-        `白部分RGBA: ${whiteRgbaText}`,
-        `比率(px/mm): ${this.scaleRatio.toFixed(4)}`,
-        `備考: ${this.notes || 'なし'}`
+		`日時\t${dateStr}`,
+		`フレームファイル名\t${this.frameImageName || '未選択'}`,
+		`テクスチャファイル名\t${this.currentTextureName || 'なし'}`,
+		`PD値\t${this.baseRealSize}mm`,
+		`顔画像ファイル名\t${this.baseImageName || '未選択'}`,
+		`黒部分RGBA\t${blackRgbaText}`,
+		`白部分RGBA\t${whiteRgbaText}`,
+		`比率(px/mm)\t${this.scaleRatio.toFixed(4)}`,
+		`備考\t${this.notes || 'なし'}`
     ].join('\n');
 
         
