@@ -9,7 +9,7 @@
     --bg-status: #f0f0f0;
     
     --bg-button-hover: #3d532a;/*選択前*/     
-    --box-shadow:rgba(31, 201, 102, 0.568);/*影＊/
+    --box-shadow:rgb(24, 145, 74);/*影＊/
     
     
     /* テキスト */
@@ -52,7 +52,7 @@
             display: flex;
             flex-wrap: nowrap;
             align-items: stretch;
-            box-shadow: 0 0 4px 4px var(--box-shadow);
+            box-shadow: 0 0 0cap 4px var(--box-shadow);
             position: relative;
             z-index: 120;
             height: 64px;
@@ -149,7 +149,7 @@
             display: flex;
             align-items: center;
             padding: 12px 10px;
-            box-shadow: inset 0 -1px 2px var(--box-shadow),0 0 4px 4px var(--box-shadow);
+            box-shadow: inset 0 -1px 2px var(--box-shadow),0 0 0px 4px var(--box-shadow);
             z-index: 100;
 			font-family:  'Inter', ;
         }
@@ -254,7 +254,7 @@
             background: var(--bg-window);
             border: 2px solid var(--border-medium);
             border-radius: 2px;
-            box-shadow: 0 8px 32px var(--box-shadow);
+            box-shadow: 0 0px 6px 1px var(--box-shadow);
             overflow: hidden;
             z-index: 1000;
             display: none;

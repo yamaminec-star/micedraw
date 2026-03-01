@@ -263,29 +263,8 @@ export class FaceMeasurementApp {
         this.resetSettings = ResetManager.resetSettings.bind(this);
     }
 
-    // 初期顔画像を生成
+    // 初期顔画像を読み込み
     createInitialFaceImage() {
-		document.fonts.load('100px "Inter"').then(() => {
-        const tempCanvas = document.createElement('canvas');
-        tempCanvas.width = 2000;
-        tempCanvas.height = 2000;
-        const tempCtx = tempCanvas.getContext('2d');
-        
-        // 白背景
-        tempCtx.fillStyle = '#b1b2b8ff';
-        tempCtx.fillRect(0, 0, 2000, 2000);
-        tempCtx.filter = 'contrast(100%) brightness(100%) url(#noise)'; 
-
-        tempCtx.fillRect(0, 0, 2000, 2000);
-        tempCtx.filter = 'none';
-        // テキスト設定
-        tempCtx.fillStyle = 'rgba(255, 255, 255, 1)';
-			tempCtx.font = '100 150px "Inter"';
-        tempCtx.textAlign = 'center';
-        tempCtx.textBaseline = 'middle';
-			tempCtx.fillText('JUS4U "your frame,your game."', 1000, 1000);
-        
-        // Imageオブジェクトに変換
         const img = new Image();
         img.onload = () => {
             this.baseImage = img;
@@ -294,8 +273,11 @@ export class FaceMeasurementApp {
             this.updateStatusBar();
             this.updateInfoWindowContent();
         };
-        img.src = tempCanvas.toDataURL();
-		});
+        img.onerror = () => {
+            // 画像が見つからない場合は何もしない
+            console.warn('initial-face.png が見つかりません。');
+        };
+        img.src = './initial-face.png';
     }
 
     setupEventListeners() {
