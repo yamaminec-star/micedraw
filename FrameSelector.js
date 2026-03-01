@@ -229,6 +229,13 @@ export async function selectFrame(filename) {
             this.updateInfoWindowContent();
             this.updateProductName();
             this.saveSettings();
+            // Google Analytics イベント送信
+            if (typeof gtag === 'function') {
+                gtag('event', 'select_frame', {
+                    frame_name: filename
+                });
+            }
+
             this.closeFrameSelector();
         };
         
