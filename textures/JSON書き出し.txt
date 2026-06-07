@@ -1,0 +1,1 @@
+Get-ChildItem -Filter *.png | Select-Object -ExpandProperty Name | ConvertTo-Json | Out-File -Encoding utf8 files.json
